@@ -10,14 +10,9 @@ app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 app.conf.CELERYBEAT_SCHEDULE = {
-    'add-every-5-seconds': {
+    'add-every-60-seconds': {
         'task': 'recurrencia_app.tasks.add',
-        'schedule': timedelta(seconds=5),
-        'args': (1, 7)
-    },
-    'mul-every-2-seconds': {
-        'task': 'recurrencia_app.tasks.mul',
-        'schedule': timedelta(seconds=2),
-        'args': (2, 3)
+        'schedule': timedelta(seconds=30),
+        # 'args': ()
     },
 }
