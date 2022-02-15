@@ -127,3 +127,26 @@ STATIC_URL = '/static/'
 # celery:
 BROKER_URL = 'amqp://guest:guest@localhost//'
 CELERY_RESULT_BACKEND='django-db'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# SMTP 
+# GMAIL : STMP 
+# EMAIL_HOST = 'smtp.mailtrap.io'
+# EMAIL_HOST_USER = '75f7f06ee13e15'
+# EMAIL_HOST_PASSWORD = '4e0c7c35284f4a'
+# EMAIL_PORT = '2525'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'scrapingxproject@gmail.com'
+SERVER_EMAIL = 'root@localhost'
+EMAIL_HOST_USER ="scrapingxproject@gmail.com"
+EMAIL_HOST_PASSWORD = "jrlvgstlbqxzsewa"
