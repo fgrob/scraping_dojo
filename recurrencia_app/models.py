@@ -13,6 +13,7 @@ class Solicitud(models.Model):
     usuario = models.ForeignKey(Usuario, related_name="solicitudes", on_delete=models.SET_NULL, blank=True, null=True)
     url = models.CharField(max_length=500)
     hash = models.CharField(max_length=256)
+    respuesta_read = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
  
