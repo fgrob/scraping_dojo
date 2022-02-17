@@ -1,46 +1,64 @@
-
-{% extends "base.html" %}
-{% block title %} Registro de usuario {% endblock %}
-{% block encabezado %} REGISTRO {% endblock %}
-
-{% block contenido %}
-
-
-
-<div class="container mt-3">
-    <div class="row">
-        <div class="col-5">
-            <h1>REGISTRO DE USUARIO</h1>
-            <form method="POST">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{request.session.registro_nombre}}">
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro</title>
+    
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+    </head>
+    <body>
+    
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-5">
+                    <h1>REGISTRO DE USUARIO</h1>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="user" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="user" name="user" value="{{request.session.registro_user}}" required>
+                        </div>
+                       
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" value="{{request.session.registro_email}}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password_confirm" class="form-label">Confirmar Contraseña</label>
+                            <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                        </div>
+        
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                    <a href="/login">ya tienes cuenta?. Ir al Login del sistema.</a>
                 </div>
-
-                <div class="mb-3">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" id="apellido" name="apellido" value="{{request.session.registro_apellido}}">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value="{{request.session.registro_email}}">
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <div class="mb-3">
-                    <label for="password_confirm" class="form-label">Confirmar Contraseña</label>
-                    <input type="password" class="form-control" id="password_confirm" name="password_confirm">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Registrar</button>
-            </form>
-            <a href="/login">ya tienes cuenta?. Ir al Login del sistema.</a>
+            </div>
         </div>
-    </div>
-</div>
-
-
-{% endblock %}
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    
+        <script>
+            
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+            }
+    
+            {% if messages %}
+                {% for message in messages %}
+                    toastr.{{message.tags }}("{{ message }}")
+                {% endfor %}
+            {% endif %}
+    
+        </script>
+    </body>
+</html>

@@ -4,5 +4,6 @@ from . import views
 urlpatterns = [
     path('peticion', views.crear_peticion),
     path('ingresarpeticion', views.ingresar_peticion),
+    path('correo', views.enviar_correo) #borrar
 ]
 

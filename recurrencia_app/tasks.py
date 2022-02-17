@@ -8,8 +8,6 @@ from urllib.request import urlopen, Request
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from mailing_app.models import User
-from mailing_app.email import EmailThread
 
 @shared_task
 def add():
@@ -50,5 +48,5 @@ def add():
             driver.save_screenshot("screenshots/screenshot-%s.png" % now)
             driver.close()
 
-            
+                      
 

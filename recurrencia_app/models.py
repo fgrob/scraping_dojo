@@ -1,22 +1,26 @@
 from django.db import models
 import hashlib
 from urllib.request import urlopen, Request
+from mailing_app.models import User
 
-class Usuario(models.Model):
-    usuario = models.CharField(max_length=50)
-    correo = models.EmailField(max_length=200)
-    #solicitudes
-   
 class Solicitud(models.Model):
-    usuario = models.ForeignKey(Usuario, related_name="solicitudes", on_delete=models.SET_NULL, blank=True, null=True)
+
+    STATUS_SOLICITUD = (
+        ('0', 'Sin cambios detectados'),
+        ('1', 'Se detectaron cambios'),
+    )
+
+    user = models.ForeignKey(User, related_name="solicitudes", on_delete=models.SET_NULL, blank=True, null=True)
     url = models.CharField(max_length=500)
     hash = models.CharField(max_length=256)
+    status = models.CharField(max_length=1, choices=STATUS_SOLICITUD, default='0')
 
     created_at = models.DateTimeField(auto_now_add=True)
  
-class log(models.Model):
-    usuario = models.ForeignKey(Usuario, related_name="logs", on_delete=models.CASCADE)    
+class Log(models.Model):
+    user = models.ForeignKey(User, related_name="logs", on_delete=models.CASCADE)    
     ruta_img = models.CharField(max_length=60)
     created_at = models.DateTimeField(auto_now_add=True)
     
+
     
