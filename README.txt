@@ -14,14 +14,14 @@
 3. Para el funcionamiento de Celery, se requiere instalar un 'Message Broker', en este caso RABBITMQ 
 Instalar con el installer desde su pagina oficial.
 
-4. Abrir con consolas (y activar el ambiente en cada una). Situarse en la carpeta raiz del proyecto.
-En una activaremos el 'worker' de celery (administrador de eventos) con el siguiente codigo:
+4. Abrir dos terminales (y activar el ambiente en cada una). Situarse en la carpeta raiz del proyecto.
+En una activa el 'worker' de celery (administrador de eventos) con el siguiente codigo:
 celery -A scraping_dojo worker -l info -P gevent 
 
-En la otra consola, activaremos celery beat, que se encarga de mandar las tareas al broker cada x segundos
+En la otra terminal, activa celery beat, que se encarga de mandar las tareas al broker cada x segundos
 celery -A scraping_dojo beat --loglevel=info
 
-listo!
+Listo!!
 
 Notas: Scraping Dojo está configurado para usar Chrome para los Screenshots. En caso de que uses otro navegador, es necesario descargar el
 WebDriver correspondiente:
