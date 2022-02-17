@@ -7,7 +7,9 @@
 ██████╔╝╚█████╔╝██║░░██║██║░░██║██║░░░░░██║██║░╚███║╚██████╔╝  ██████╔╝╚█████╔╝╚█████╔╝╚█████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░╚════╝░░╚════╝░░╚════╝░
 
+Configuración de Correo:
 
+Configuración de Celery:
 
 1. Instalar todos los paquetes contenidos en 'requerimientos.txt' en un nuevo ambiente virtual
 2. Instalar el entorno de lenguaje ERLANG. El instalador está en erlang.org
@@ -32,3 +34,8 @@ Guarda el exe en la carpeta webdriver que está dentro de la carpeta recurrencia
 driver = webdriver.Chrome('recurrencia_app/webdriver/chromedriver.exe') #acá habría que poner el webdriver y su path
 
 *Si tienes problemas con Chrome, chequea que versión tienes y descarga el webdriver acorde a su versión
+
+
+Configurar recurrencia:
+Para editar el tiempo en que buscara cambios, ir a carpeta Scraping_dojo (mismo nivel que el settings.py), abrir celery.py y editar:
+'schedule': timedelta(seconds=10),
