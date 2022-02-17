@@ -1,0 +1,18 @@
+body{
+    background-color: #fffdd9;
+}
+label{
+    text-align: justify;
+    font-size: large;
+    margin-left: 6%;
+}
+
+.form-control{
+    width: 2.5em;
+}
+
+.wrapper{
+    width: 75%;
+    height: 100%;
+    margin:auto;
+}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block contenido %}
+
+{% include 'menu.html'%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_dashboard.css' %}">
+
+<div class="wrapper">
+<div class="input-group mb-3">
+    <label for="basic-url">URL</label>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+<button type="submit" class="btn btn-primary">Ingresar</button>
+<hr>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Link</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ult. Cambio</th>
+            <th scope="col">URL Modif.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a href="http://">http://stackoverflow.com</a></td>
+            <td>Status Link</td>
+            <td>LAST CHANGE TAG</td>
+            <td>URL MODIFICADO</td>
+        </tr>
+
+</table>
+</div>
+{% endblock %}
