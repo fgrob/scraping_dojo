@@ -6,6 +6,8 @@ from time import sleep
 import hashlib
 from urllib.request import urlopen, Request
 from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 @shared_task
 def add():
@@ -14,7 +16,7 @@ def add():
         url = solicitud.url
         response = urlopen(url).read()
 
-        #recorremos cada palabra. Si es muy larga, la quitamos. Esto es para evitar los tokens variables que afectarían el hashing
+        #recorremos cada palabra. Si la palabra es muy larga, la quitamos. El objetivo es quitar los tokens variables que afectarían el hashing
         for word in response.split():
             if len(word) > 40:
                 empty = ''
@@ -36,4 +38,15 @@ def add():
             print('-------------------------------------------------------------------------')
             solicitud.hash = hash
             solicitud.save()
+
+            #screenshots:
+            options = Options()
+            options.headless = True
+            driver = webdriver.Chrome('recurrencia_app/webdriver/chromedriver.exe', chrome_options=options)
+            driver.maximize_window()
+            driver.get(url)
+            now = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
+            driver.save_screenshot("screenshots/screenshot-%s.png" % now)
+            driver.close()
+            
 

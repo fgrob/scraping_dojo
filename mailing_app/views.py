@@ -26,8 +26,6 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-
-
 def registro(request):
     if request.method == 'GET':
 
