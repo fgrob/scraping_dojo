@@ -10,7 +10,7 @@ class Solicitud(models.Model):
         ('1', 'Se detectaron cambios'),
     )
 
-    user = models.ForeignKey(User, related_name="solicitudes", on_delete=models.SET_NULL, blank=True, null=True)
+    user = models.ForeignKey(User, related_name="solicitudes", on_delete=models.CASCADE, blank=True, null=True)
     url = models.CharField(max_length=500)
     hash = models.CharField(max_length=256)
     status = models.CharField(max_length=1, choices=STATUS_SOLICITUD, default='0')
