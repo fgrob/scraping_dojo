@@ -3,6 +3,7 @@ from django.contrib import messages
 from mailing_app.models import User
 import bcrypt
 from mailing_app.email import send_user_mail
+from recurrencia_app.models import Solicitud
 
 
 def registro(request):
@@ -88,3 +89,17 @@ def logout(request):
         del request.session['user']
 
     return redirect("/login/")
+
+
+def logs(request, solicitud_id):
+
+    solicitud = Solicitud.objects.get(id=solicitud_id)
+
+    context = {
+        'solicitud': solicitud
+    }
+   
+    solicitud.status = '0'
+    solicitud.save()
+
+    return render(request, 'log.html', context)

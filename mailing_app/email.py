@@ -2,18 +2,18 @@ from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import get_template
 
-def send_user_mail(user):
-    subject = 'Correo de Prueba'
+def send_user_mail(solicitud):
+    subject = 'Se ha detectado un cambio SCRAP'
     template = get_template('correo.html')
 
     content = template.render({
-        'usuario': user,
+        'solicitud': solicitud,
     })
 
     message = EmailMultiAlternatives(subject, #Titulo
-                                    # '',
+                                    '',
                                     settings.EMAIL_HOST_USER, #Remitente
-                                    [user.email]) #Destinatario
+                                    [solicitud.user.email]) #Destinatario
 
     message.attach_alternative(content, 'text/html')
     message.send()

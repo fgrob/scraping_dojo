@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Registro</title>
+        <title>Log</title>
     
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
@@ -15,55 +15,40 @@
            
             <br>
             <div class="row text-center">                
-                <h2>Ingresar!</h2>
+                <h2>Log</h2>
                 <br>
+                <p>{{solicitud.url}}</p>
                 <br>
                 <br>
             </div>
             <br> 
 
-            <form action="/recurrencia/ingresarpeticion" method="post" class="row">
-                {% csrf_token %}
-
-                <div class="row text-left">
-                    <div class="col-md-4 mb-3">
-                        <label for="url_objetivo" class="fw-bold">URL</label>
-                    </div>
-                    <div class="col mb-3">
-                        <input name="url_objetivo" required type="text" class="form-control" id="url_objetivo">
-                    </div>
-                </div>                                               
-                                                        
-                <div class="d-flex justify-content-center">
-                    <br>
-                    <button type="submit" class="btn btn-outline-dark">Ingresar</button>                                                  
-                </div>  
-            </form>
             <br>
             <div class="row">
                 <table class="display table table-bordered table-striped text-center align-middle">
                     <tr>
-                        <th>URL</th>
+                        <th>FECHA</th>
                         <th>STATUS</th>
-                        <th>ACCIONES</th>
+                        <th>IMAGEN</th>
                     </tr>
-                    {% for solicitud in user.solicitudes.all %}
+                    {% for logs in solicitud.logs.all %}
                     <tr>
-                        <td>{{solicitud.url}}</td>
-                        {% if solicitud.status == '1' %}
-                            <td class="text-nowrap bg-danger text-white">{{solicitud.get_status_display}}</td>
-                        {% else %}
-                            <td class="text-nowrap bg-success text-white">{{solicitud.get_status_display}}</td>
-                        {% endif %}
-                        <td class="text-nowrap"><a href="/log/{{solicitud.id}}">Ver log</a><br> Borrar solicitud</td>
+                        <td>{{logs.created_at}}</td>
 
+                        {% if logs.status_log == "Sin cambios detectados" %}
+                            <td class="text-nowrap bg-success text-white">{{logs.status_log}}</td>
+                        {% else %}
+                        <td class="text-nowrap bg-danger text-white">{{logs.status_log}}</td>
+                        {% endif %}
+                        <td>
+                            {% if logs.ruta_img %}
+                            <a href="/{{logs.ruta_img}}" target="_blank">Screenshot</a></td>
+                            {% endif %}
                     </tr>
                     {% endfor %}
                 </table>
-
-
+                
             </div>
-
 
         </div>
     

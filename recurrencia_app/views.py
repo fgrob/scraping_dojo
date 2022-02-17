@@ -8,21 +8,10 @@ from urllib.request import urlopen, Request
 #mailing app:
 from mailing_app.email import send_user_mail
 
-def crear_peticion(request):
-#pantalla para ingresar URL objetivo
-
-    usuarios = User.objects.all()
-
-    context = {'usuarios' : usuarios}
-
-    return render(request, 'crear_peticion.html', context)
-
 
 def ingresar_peticion(request):
 #procesar y guardar la info en la BBDD
-
-    print(request.POST)
-    
+   
     #hasheamos el website:
     try:
         url = Request(request.POST['url_objetivo'])
@@ -42,10 +31,3 @@ def ingresar_peticion(request):
 
     messages.success(request, "URL Ingresada")
     return redirect('/')
-
-#-----------BORRAR:
-def enviar_correo(request):
-    
-    send_user_mail(User.objects.get(id=1))
-    
-    return HttpResponse('correo enviado')

@@ -9,17 +9,10 @@
 </head>
 <body>
 
-    <h1>Hola, {{user.firstname}}</h1>
+    <h1>Hola, {{solicitud.user.user}}</h1>
 
-    <h2>Esto es un correo de Prueba</h2>
+    <h2>La página {{solicitud.url}} tiene cambios!</h2>
 
-    <h3>¿cuáles son los límites de HMTL para enviar en un correo?</h3>
-
-    <h4>Saludos!</h4>
-    <br>
-    {% comment %} <h1>Esto es un correo de Prueba</h1>
-    <p>Variable del CONTEXTO: user.firstname {{user.lastname}} {{User.email}}</p>
-    <p>Desde la variable de SESION: {{session_user.firstname}} {{request.session.usuario.firstname}}</p>
-    <img src="https://as02.epimg.net/meristation/imagenes/2021/08/08/noticias/1628411218_060849_1628411288_noticia_normal_recorte1.jpg"> {% endcomment %}
+    <h4>Entra al Dashboard para ver más información</h4>
 </body>
 </html>

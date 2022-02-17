@@ -8,6 +8,7 @@ from urllib.request import urlopen, Request
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from mailing_app.email import send_user_mail
 
 @shared_task
 def add():
@@ -29,6 +30,13 @@ def add():
             print('URL OBJETIVO: ',url)
             print('**Sin cambios**')
             print('-------------------------------------------------------------------------')
+
+            Log.objects.create(
+                solicitud = solicitud,
+                status_log = solicitud.get_status_display(),
+                ruta_img = '',                
+            )
+
             continue
         else:          
             print('-------------------------------------------------------------------------')
@@ -36,6 +44,7 @@ def add():
             print('**HAY CAMBIOS EN LA WEB!**')
             print('-------------------------------------------------------------------------')
             solicitud.hash = hash
+            solicitud.status = '1'
             solicitud.save()
 
             #screenshots:
@@ -45,8 +54,17 @@ def add():
             driver.maximize_window()
             driver.get(url)
             now = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
-            driver.save_screenshot("screenshots/screenshot-%s.png" % now)
+            ruta = "static/screenshots/screenshot-%s.png" % now
+            driver.save_screenshot("recurrencia_app/" + ruta)
             driver.close()
+
+            Log.objects.create(
+                solicitud = solicitud,
+                status_log = solicitud.get_status_display(),
+                ruta_img = ruta,                
+            )
+
+            send_user_mail(solicitud)
 
                       
 

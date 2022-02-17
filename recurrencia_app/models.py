@@ -18,8 +18,9 @@ class Solicitud(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
  
 class Log(models.Model):
-    user = models.ForeignKey(User, related_name="logs", on_delete=models.CASCADE)    
-    ruta_img = models.CharField(max_length=60)
+    solicitud = models.ForeignKey(Solicitud, related_name="logs", on_delete=models.CASCADE)
+    status_log = models.CharField(max_length=50)
+    ruta_img = models.CharField(max_length=60, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     
 
