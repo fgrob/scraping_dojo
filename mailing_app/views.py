@@ -98,8 +98,27 @@ def logs(request, solicitud_id):
     context = {
         'solicitud': solicitud
     }
-   
+
     solicitud.status = '0'
     solicitud.save()
 
     return render(request, 'log.html', context)
+
+def delete(request, solicitud_id):
+    if 'user' not in request.session:
+        return redirect('/login')
+
+    solicitud = Solicitud.objects.get(id=solicitud_id)
+    solicitud.delete()
+    
+    context = {
+        'solicitud': solicitud
+        }
+    return redirect('/')
+
+
+def logout(request):
+    if 'user' in request.session:
+        del request.session['user']
+        
+    return redirect('/')
