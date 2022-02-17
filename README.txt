@@ -23,12 +23,12 @@ celery -A scraping_dojo beat --loglevel=info
 
 Listo!!
 
-Notas: Scraping Dojo está configurado para usar Chrome para los Screenshots. En caso de que uses otro navegador, es necesario descargar el WebDriver correspondiente:
+Notas: Scraping Dojo está configurado para usar Chrome a la hora de tomar Screenshots. En caso de que uses otro navegador, es necesario descargar el WebDriver correspondiente:
 
 selenium.dev/documentation/webdriver/getting_started/install_drivers/
 
-Guarda el exe en la carpeta webdriver que está dentro de la carpeta recurrencia_app, y modifica la siguiente linea en task.py (task.py está dentro de la carpeta recurrencia_app):
+Guarda el exe en la carpeta webdriver que está dentro de la carpeta recurrencia_app, y modifica la siguiente linea en el archivo task.py (recurrencia_app):
 
 driver = webdriver.Chrome('recurrencia_app/webdriver/chromedriver.exe') #acá habría que poner el webdriver y su path
 
-*Si tienes problemas con Chrome, chequea que versión tienes de Chrome y descarga el webdriver acorde a su versión
+*Si tienes problemas con Chrome, chequea que versión tienes y descarga el webdriver acorde a su versión
