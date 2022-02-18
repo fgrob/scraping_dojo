@@ -14,7 +14,7 @@ def ingresar_peticion(request):
    
     #hasheamos el website:
     try:
-        url = Request(request.POST['url_objetivo'])
+        url = Request(request.POST['url_objetivo'], headers={'User-Agent': 'Mozilla/5.0'})
         response = urlopen(url).read()
         hash = hashlib.sha224(response).hexdigest()
     except:
@@ -31,3 +31,4 @@ def ingresar_peticion(request):
 
     messages.success(request, "URL Ingresada")
     return redirect('/')
+

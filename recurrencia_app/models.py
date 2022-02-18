@@ -14,6 +14,7 @@ class Solicitud(models.Model):
     url = models.CharField(max_length=500)
     hash = models.CharField(max_length=256)
     status = models.CharField(max_length=1, choices=STATUS_SOLICITUD, default='0')
+    #logs
 
     created_at = models.DateTimeField(auto_now_add=True)
  

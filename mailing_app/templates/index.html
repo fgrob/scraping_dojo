@@ -10,13 +10,9 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     </head>
     <body>
-<<<<<<< HEAD
-    
-        <div class="container mt-3">           
-=======
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand offset-1" href="/"><b>Scraping Dojo</b></a>
+                <a class="navbar-brand offset-1" href="/"><b>SCRAPING DOJO</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -26,7 +22,6 @@
         
                     <div class="d-flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
                             <li class="nav-item">
                                 <span class="nav-link active text-white">Bienvenido, <b>{{request.session.user.user}}</b></span>
                             </li>
@@ -36,12 +31,11 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-3">
-           
->>>>>>> 96dc750ec1ef3f06246804df86bfaec10c0fef88
+    
+        <div class="container mt-3">           
             <br>
             <div class="row text-center">                
-                <h2>Ingresar!</h2>
+                <h2>Dashboard</h2>
                 <br>
                 <br>
                 <br>
@@ -52,8 +46,7 @@
                 {% csrf_token %}
 
                 <div class="row text-left">
-                    <label for="url_objetivo" class="fw-bold">URL</label>
-                    <input name="url_objetivo" required type="text" class="form-control" id="url_objetivo">
+                    <input name="url_objetivo" required type="text" class="form-control" id="url_objetivo" placeholder="Ingresa acá la URL a scrapear">
                     <div class="col-md-4 mb-3">
                     </div>
                     <div class="col mb-3">
@@ -62,7 +55,7 @@
                                                         
                 <div class="d-flex justify-content-center">
                     <br>
-                    <button type="submit" class="btn btn-outline-primary">Ingresar</button>                                                  
+                    <button type="submit" class="btn btn-dark">Ingresar</button>                                                  
                 </div>  
             </form>
             <br>
@@ -82,7 +75,7 @@
                         {% else %}
                             <td class="text-nowrap bg-success text-white">{{solicitud.get_status_display}}</td>
                         {% endif %}
-                        <td class="text-nowrap"><a href="/log/{{solicitud.id}}">Ver log</a><br><a href="delete/{{solicitud.id}}">Borrar solicitud</a></td>
+                        <td class="text-nowrap"><a href="/log/{{solicitud.id}}" class="btn btn-warning btn-sm">Ver log</a> <a href="delete/{{solicitud.id}}" class="btn btn-secondary btn-sm">Borrar solicitud</a></td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -107,6 +100,10 @@
                     toastr.{{message.tags }}("{{ message }}")
                 {% endfor %}
             {% endif %}
+
+            setInterval(() => {
+                location.reload();
+            }, 60000);
     
         </script>
     </body>

@@ -10,26 +10,40 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-5">
-                    <h1>LOGIN!!!</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand offset-1" href="/"><b>SCRAPING DOJO</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-2"></ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-3 d-flex justify-content-center">            
+            <div class="col-5 text-center">
+                <br>
+                <br>
+                <h1>Iniciar sesión</h1>
+                    <br>
                     <form method="POST">
                         {% csrf_token %}              
         
-                        <div class="mb-3">
-                            <label for="user" class="form-label">Nombre de usuario</label>
-                            <input type="text" class="form-control" id="user" name="user">
+                        <div class="mb-3 form-group form-inline">
+                            <input type="text" class="form-control" id="user" name="user" placeholder="Usuario">
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>               
         
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <br>
+                        <button type="submit" class="btn btn-dark">Login</button>
                     </form>
-                    <a href="/registro">No tienes una cuenta?. ir al registro.</a>
-                </div>
+                    <br>
+                    <a href="/registro">Registro</a>
             </div>
         </div>
 

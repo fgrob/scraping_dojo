@@ -10,9 +10,9 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand offset-1" href="/"><b>Scraping Dojo</b></a>
+                <a class="navbar-brand offset-1" href="/"><b>SCRAPING DOJO</b></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,10 +41,12 @@
                 <br>
                 <p>{{solicitud.url}}</p>
                 <br>
-                <br>
             </div>
             <br> 
 
+            <div class="d-flex justify-content-end">
+                <a href="/cleanlogs/{{solicitud.id}}" class="btn btn-danger">Borrar logs</a>
+            </div>
             <br>
             <div class="row">
                 <table class="display table table-bordered table-striped text-center align-middle">
@@ -93,7 +95,7 @@
             
             setInterval(() => {
                 location.reload();
-            }, 1000);
+            }, 5000);
         </script>
     </body>
 </html>

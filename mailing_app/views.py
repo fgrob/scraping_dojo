@@ -1,3 +1,4 @@
+from django import http
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from mailing_app.models import User
@@ -117,6 +118,14 @@ def delete(request, solicitud_id):
         }
     return redirect('/')
 
+def cleanlogs(request, solicitud_id):
+    if 'user' not in request.session:
+        return redirect('/login')
+
+    logs = Solicitud.objects.get(id=solicitud_id).logs.all()
+    logs.delete()
+
+    return redirect('/log/' + str(solicitud_id))
 
 def logout(request):
     if 'user' in request.session:

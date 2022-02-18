@@ -15,7 +15,8 @@ def add():
 
     for solicitud in Solicitud.objects.all():
         url = solicitud.url
-        response = urlopen(url).read()
+        url_header = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        response = urlopen(url_header).read()
 
         #recorremos cada palabra. Si la palabra es muy larga, la quitamos. El objetivo es quitar los tokens variables que afectarían el hashing
         for word in response.split():
@@ -33,7 +34,7 @@ def add():
 
             Log.objects.create(
                 solicitud = solicitud,
-                status_log = solicitud.get_status_display(),
+                status_log = 'Sin cambios detectados',
                 ruta_img = '',                
             )
 
