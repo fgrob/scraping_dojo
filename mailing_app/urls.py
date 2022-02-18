@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.index),  
     path('logout/', views.logout),
     path('log/<int:solicitud_id>', views.logs),
+    path('delete/<int:solicitud_id>', views.delete),
 ]
 

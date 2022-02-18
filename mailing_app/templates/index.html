@@ -10,8 +10,35 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
     </head>
     <body>
+<<<<<<< HEAD
     
         <div class="container mt-3">           
+=======
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container-fluid">
+                <a class="navbar-brand offset-1" href="/"><b>Scraping Dojo</b></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-2"></ul>
+        
+                    <div class="d-flex">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        
+                            <li class="nav-item">
+                                <span class="nav-link active text-white">Bienvenido, <b>{{request.session.user.user}}</b></span>
+                            </li>
+                        </ul>
+                        <a href="/logout" class="btn btn-outline-danger">Cerrar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-3">
+           
+>>>>>>> 96dc750ec1ef3f06246804df86bfaec10c0fef88
             <br>
             <div class="row text-center">                
                 <h2>Ingresar!</h2>
@@ -45,6 +72,7 @@
                         <th>URL</th>
                         <th>STATUS</th>
                         <th>ACCIONES</th>
+
                     </tr>
                     {% for solicitud in user.solicitudes.all %}
                     <tr>
@@ -54,8 +82,7 @@
                         {% else %}
                             <td class="text-nowrap bg-success text-white">{{solicitud.get_status_display}}</td>
                         {% endif %}
-                        <td class="text-nowrap"><a href="/log/{{solicitud.id}}">Ver log</a><br> Borrar solicitud</td>
-
+                        <td class="text-nowrap"><a href="/log/{{solicitud.id}}">Ver log</a><br><a href="delete/{{solicitud.id}}">Borrar solicitud</a></td>
                     </tr>
                     {% endfor %}
                 </table>
