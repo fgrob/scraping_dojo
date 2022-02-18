@@ -38,7 +38,21 @@ def add():
             )
 
             continue
-        else:          
+        else:
+            #actualizamos la BBDD:
+            solicitud.hash = hash
+            solicitud.status = '1'
+            solicitud.save()
+
+            now = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
+            ruta = "static/screenshots/screenshot-%s.png" % now
+
+            Log.objects.create(
+                solicitud = solicitud,
+                status_log = solicitud.get_status_display(),
+                ruta_img = ruta,                
+            )
+
             print('-------------------------------------------------------------------------')
             print('URL OBJETIVO:',url)
             print('**HAY CAMBIOS EN LA WEB!**')
@@ -54,21 +68,9 @@ def add():
             w = driver.execute_script('return document.body.parentNode.scrollWidth')
             h = driver.execute_script('return document.body.parentNode.scrollHeight')
             driver.set_window_size(w, h)
-            
-            now = datetime.now().strftime('%d-%m-%Y_%H-%M-%S')
-            ruta = "static/screenshots/screenshot-%s.png" % now
+                        
             driver.save_screenshot("recurrencia_app/" + ruta)
-            driver.close()
-
-            #actualizamos la BBDD:
-            solicitud.hash = hash
-            solicitud.status = '1'
-            solicitud.save()
-            Log.objects.create(
-                solicitud = solicitud,
-                status_log = solicitud.get_status_display(),
-                ruta_img = ruta,                
-            )
+            driver.close()            
 
             #enviamos correo avisando
             send_user_mail(solicitud)

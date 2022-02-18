@@ -31,9 +31,9 @@
                         <th>STATUS</th>
                         <th>IMAGEN</th>
                     </tr>
-                    {% for logs in solicitud.logs.all %}
+                    {% for logs in solicitud.logs.all|dictsortreversed:"created_at" %}
                     <tr>
-                        <td>{{logs.created_at}}</td>
+                        <td>{{logs.created_at|date:"M d, Y H:i:s"}}</td>
 
                         {% if logs.status_log == "Sin cambios detectados" %}
                             <td class="text-nowrap bg-success text-white">{{logs.status_log}}</td>
@@ -68,7 +68,10 @@
                     toastr.{{message.tags }}("{{ message }}")
                 {% endfor %}
             {% endif %}
-    
+            
+            setInterval(() => {
+                location.reload();
+            }, 1000);
         </script>
     </body>
 </html>

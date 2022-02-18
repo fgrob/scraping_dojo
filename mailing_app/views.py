@@ -97,6 +97,7 @@ def logs(request, solicitud_id):
 
     context = {
         'solicitud': solicitud
+
     }
    
     solicitud.status = '0'
