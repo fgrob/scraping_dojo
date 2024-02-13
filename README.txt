@@ -7,6 +7,9 @@
 ██████╔╝╚█████╔╝██║░░██║██║░░██║██║░░░░░██║██║░╚███║╚██████╔╝  ██████╔╝╚█████╔╝╚█████╔╝╚█████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░╚════╝░░╚════╝░░╚════╝░
 
+Aplicación de scraping creada como proyecto para certificación en Python.
+Esta aplicación lo que hace es tomar algún link que le pases, y revisar cada x cantidad de tiempo si la página tiene cambios. En caso de que hayan cambios, la aplicación sacará un pantallazo de la página y avisará por correo.
+
 Configuración de Correo:
 
 Configuración de Celery:
