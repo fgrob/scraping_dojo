@@ -7,6 +7,9 @@
 ██████╔╝╚█████╔╝██║░░██║██║░░██║██║░░░░░██║██║░╚███║╚██████╔╝  ██████╔╝╚█████╔╝╚█████╔╝╚█████╔╝
 ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░╚════╝░░╚════╝░░╚════╝░
 
+Aplicación de Scraping que revisa cada cierto tiempo si hay algún cambio en una Web, y en caso de haberlo, toma un pantallazo y avisa por correo.
+Puedes especificar la link objetivo, el tiempo entre cada revisión y el correo al cual quieres que te llegue el aviso.
+
 Configuración de Correo:
 
 Configuración de Celery:
